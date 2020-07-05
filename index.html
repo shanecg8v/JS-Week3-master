@@ -169,13 +169,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="media" v-for="item in tempProduct.options.comments" :key="item.name">
-                            <img :src="item.avator" class="mr-3 image-fluid user-avator">
-                            <div class="media-body">
-                                <h5 class="mt-0">{{item.name}}</h5>
-                                {{item.comment}}
+                        <template v-if="tempProduct.options.comments.length> 0">
+                            <div class="media" v-for="item in tempProduct.options.comments" :key="item.name">
+                                <img :src="item.avator" class="mr-3 image-fluid user-avator">
+                                <div class="media-body">
+                                    <h5 class="mt-0">{{item.name}}</h5>
+                                    {{item.comment}}
+                                </div>
                             </div>
-                        </div>
+                        </template>
+                        <div class="text-danger text-center" v-else>目前無任何評價</div>
                     </div>
                 </div>
             </div>

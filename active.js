@@ -2,7 +2,10 @@ var app = new Vue({
     el: '#app',
     data: {
         tempProduct: {
-            options: {}
+            options: {
+                stars: 0,
+                comments: []
+            }
         },
         products: [{
             id: '123456789',
@@ -57,14 +60,22 @@ var app = new Vue({
                 this.tempProduct.id = id;
                 this.products.push(this.tempProduct);
             }
-            this.tempProduct = {};
+            this.tempProduct = {
+                options: {
+                    stars: 0,
+                    comments: []
+                }
+            };
             $('#productModal').modal('hide');
         },
         openModal(action, item) {
             switch (action) {
                 case 'new':
                     this.tempProduct = {
-                        options: {}
+                        options: {
+                            stars: 0,
+                            comments: []
+                        }
                     };
                     $('#productModal').on('show.bs.modal', e => {
                         $('#productModalLabel').text("新增產品");
